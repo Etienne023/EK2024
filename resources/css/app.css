@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.flags {
+    @apply w-24 h-24 object-cover rounded-full shadow-md;
+}
