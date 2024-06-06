@@ -42,5 +42,4 @@ Route::put('/games/edit/{game}', [GameController::class, 'update'])->name('games
 
 route::get('/standings/index', [StandingsController::class, 'index'])->name('standings.index');
 
-
 require __DIR__.'/auth.php';
