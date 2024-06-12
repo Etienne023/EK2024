@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('news_items', function (Blueprint $table) {
             $table->id();
-            $table->renameColumn('id', 'category_id');
+            $table->renameColumn('id', 'news_item_id' );
             $table->string('title');
             $table->string('description');
-            $table->foreignId('nieuwsbericht_id')->constrained('nieuwsbericht', 'nieuwsbericht_id');
+            $table->foreignId('category_id')->constrained('categories', 'category_id');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('news_items');
     }
 };

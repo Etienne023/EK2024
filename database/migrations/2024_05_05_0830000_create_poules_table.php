@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tag_nieuwsbericht', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('tag_id')->constrained('tag', 'tag_id'); // change 'id' to 'tag_id'
-            $table->foreignId('nieuwsbericht_id')->constrained('nieuwsbericht', 'nieuwsbericht_id');
+    
+        Schema::create('poules', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('name');
+            $table->string('crest');
+            $table->foreignId('user_id')->constrained(); // change 'id' to 'user_id'
             $table->timestamps();
         });
     
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tag_nieuwsbericht');
+        Schema::dropIfExists('pool');
     }
 };

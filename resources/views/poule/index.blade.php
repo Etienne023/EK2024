@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __(' teams') }}
+            {{ __('Poules') }}
         </h2>
     </x-slot>
 
@@ -14,22 +14,28 @@
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2">Name</th>
-                                    <th class="px-4 py-2">TLA</th>
-                                    <th class="px-4 py-2">Website</th>
-                                    <th class="px-4 py-2">Pool</th>
+                                    <th class="px-4 py-2">Participants</th>
+                                    <th class="px-4 py-2">Owner</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($teams as $team)
+                                @foreach($poules as $poule)
                                     <tr>
+                                        <td class="border px-4 py-2">{{ $poule->name }}</td>
                                         <td class="border px-4 py-2">
-                                            <a href="{{ route('teams.show', $team->id) }}">
+                                            @foreach($poule->teams as $team)
                                                 {{ $team->name }}
-                                            </a>
+                                            @endforeach
                                         </td>
-                                        <td class="border px-4 py-2">{{ $team->tla }}</td>
-                                        <td class="border px-4 py-2">{{ $team->website }}</td>
-                                        <td class="border px-4 py-2">{{ $team->poules->name }}</td>
+                                        <td class="border px-4 py-2">{{$poule->user->name}}</td>
+                                        <td class="text-center"><a href="{{ route('poule.edit', $poule->id) }}">Edit Player</a></td>
+                                        <td class="text-center">
+                                            <form action="{{ route('poule.destroy', $poule->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Delete Player</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

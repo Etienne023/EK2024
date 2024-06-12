@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('infix')->nullable();
             $table->string('surname');
-            $table->string('jersey number');
+            $table->string('jerseynumber');
             $table->string('position');
             $table->string('crest');
             $table->foreignId('team_id')->constrained();

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tla');
             $table->string('crest');
             $table->string('website');
-            $table->string('pool')->default('default_value');
+            $table->foreignId('pool_id')->constrained('poules');
             $table->timestamps();
         });
     }

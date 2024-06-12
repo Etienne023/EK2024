@@ -9,7 +9,16 @@ class Team extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'tla',
+        'crest',
+        'website',
+        'pool_id',
+    ];
 
-
-
+    public function pool()
+    {
+        return $this->belongsTo(Poule::class, 'pool_id');
+    }
 }

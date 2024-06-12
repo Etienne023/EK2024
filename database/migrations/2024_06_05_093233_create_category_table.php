@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nieuwsbericht', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->renameColumn('id', 'nieuwsbericht_id' );
+            $table->renameColumn('id', 'category_id');
             $table->string('title');
             $table->string('description');
-            $table->foreignId('user_id')->constrained('users', 'user_id');
-            $table->foreignId('tag_id')->constrained('tag', 'tag_id');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nieuwsbericht');
+        Schema::dropIfExists('categories');
     }
 };
